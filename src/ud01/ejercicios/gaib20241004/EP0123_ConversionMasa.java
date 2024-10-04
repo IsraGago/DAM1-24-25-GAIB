@@ -18,8 +18,9 @@ public class EP0123_ConversionMasa {
          * LIBRAS Y SI NO LO ESTÁ QUIERE DECIR QUE LA MEDDIDA ORIGINAL ESTÁ EN LIBRAS,
          * POR TANTO LO PASO A KILOGRAMOS
          */
-        resultado = medida == "k" ? masa * 453.592 : masa * 453.592 / 1000;
-        System.out.println(resultado);
+        resultado = medida.equals("k") ? masa * 453.592 : masa * 453.592 / 1000;
+        medida = medida.equals("k")?"libras":"kilogramos";
+        System.out.println("La conversión es de: "+resultado+" "+medida);
 
         sc.close();
     }
