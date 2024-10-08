@@ -15,6 +15,6 @@ public class EP0122 {
         sc.close();
         celsius = 5/9.0 * (farenheit-32);
         // System.out.println(farenheit+" grados Farenheit son "+celsius+" grados Celsius.");
-        System.out.printf(farenheit+" grados Farenheit son %.2f grados Celsius",celsius);
+        System.out.printf(farenheit+" grados Farenheit son %.2f grados Celsius %n",celsius);
     }
 }
