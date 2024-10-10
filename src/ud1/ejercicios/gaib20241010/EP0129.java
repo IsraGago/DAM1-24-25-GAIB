@@ -3,12 +3,14 @@ import java.util.Scanner;
 
 public class EP0129 {
     public static void main(String[] args) {
-        int numero ;
+        int numero = 2;
+        final int NUMERO_MULTIPLOS = 7;
         Scanner sc = new Scanner(System.in);
-        System.out.print("Inserte el número: ");
-        numero = sc.nextInt();
+        // System.out.print("Inserte el número: ");
+        // numero = sc.nextInt();
         sc.close();
-        System.err.println(numero % 7);
+
+        System.err.println(NUMERO_MULTIPLOS - (numero % NUMERO_MULTIPLOS));
 
     }
 }
