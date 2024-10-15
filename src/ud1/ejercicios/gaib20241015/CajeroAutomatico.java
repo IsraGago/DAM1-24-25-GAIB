@@ -36,7 +36,7 @@ public class CajeroAutomatico {
         System.out.println(billetes5 + " billetes de 5 euros: ");
         System.out.println(monedas2 + " monedas de 2 euros: ");
         System.out.println(monedas1 + " billetes de 1 euro: ");
-        System.out.println(resto > 0 ? resto + " euros no se retirarán por no haber billetes tan pequeños" : "");
+        System.out.println(resto > 0 ? resto + " euros no se retirarán por no haber efectivo tan pequeño" : "");
         sc.close();
     }
 }
