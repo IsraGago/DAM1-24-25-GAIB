@@ -9,11 +9,11 @@ public class EP0125_ConversionVelocidad {
         final double KM_MS = 0.27778;
         final double MPS_KM = 1.60934;
         Scanner sc = new Scanner(System.in);
-        System.out.print("Inserte la unidad de medida de origen km/h(1) m/s(2) mph(3): ");
+        System.out.print("Inserte la unidad de medida de origen km/h (1) m/s (2) mph (3): ");
         medidaOrigen = sc.nextInt();
         System.out.print("Inserte la velocidad: ");
         cantidadOrigen = sc.nextDouble();
-        System.out.print("Inserte la unidad de medida de destino km/h(1) m/s(2) mph(3): ");
+        System.out.print("Inserte la unidad de medida de destino km/h (1) m/s (2) mph (3): ");
         medidaDestino = sc.nextInt();
         sc.close();
 
