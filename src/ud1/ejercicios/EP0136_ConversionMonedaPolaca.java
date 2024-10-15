@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class EP0136_ConversionMonedaPolaca {
     public static void main(String[] args) {
         final double ESLOTI_EURO = 0.23;
-        double cantidadOrigen,cantidadDestino;
+        double cantidadOrigen, cantidadDestino;
         int monedaOrigen;
         Scanner sc = new Scanner(System.in);
 
@@ -15,7 +15,8 @@ public class EP0136_ConversionMonedaPolaca {
         cantidadOrigen = sc.nextDouble();
         sc.close();
 
-        cantidadDestino = monedaOrigen == 1 ? cantidadOrigen * ESLOTI_EURO : cantidadOrigen / ESLOTI_EURO ;
-        System.out.printf("%.2f %s son %.2f %s",cantidadOrigen,monedaOrigen == 1 ? "eslotis" : "euros",cantidadDestino,monedaOrigen == 1 ? "euros" : "eslotis");
+        cantidadDestino = monedaOrigen == 1 ? cantidadOrigen * ESLOTI_EURO : cantidadOrigen / ESLOTI_EURO;
+        System.out.printf("%.2f %s son %.2f %s", cantidadOrigen, monedaOrigen == 1 ? "eslotis" : "euros",
+                cantidadDestino, monedaOrigen == 1 ? "euros" : "eslotis");
     }
 }
