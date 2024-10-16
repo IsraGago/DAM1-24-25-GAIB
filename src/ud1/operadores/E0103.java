@@ -1,6 +1,6 @@
 package ud1.operadores;
 import java.util.Scanner;
-public interface E0103 {
+public class E0103 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("¿Cuántos años tienes? ");

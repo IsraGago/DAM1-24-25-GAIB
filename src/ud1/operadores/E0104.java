@@ -1,7 +1,7 @@
 package ud1.operadores;
 import java.time.LocalDateTime;
 import java.util.Scanner;
-public interface E0104 {
+public class E0104 {
     public static void main(String[] args) {
         int anhoActual = LocalDateTime.now().getYear();
         Scanner sc = new Scanner(System.in);
