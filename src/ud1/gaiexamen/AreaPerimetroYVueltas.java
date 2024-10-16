@@ -31,7 +31,7 @@ public class AreaPerimetroYVueltas {
         System.out.println("El área de la figura es de " + String.format("%.2f", areaTotal));
         System.out.println("El perimetro de la figura es de " + String.format("%.2f", perimetroTotal));
         System.out.println("Para completar la media maratón hay que dar " + vueltas + " vueltas a la pista y correr "
-                + String.format("%.0f", Math.ceil(metrosExtra)) + " metros adicionales");
+                + String.format("%.0f", Math.ceil(metrosExtra)) + " metros");
 
         sc.close();
     }
