@@ -2,7 +2,7 @@ package ud2.ejercicios;
 
 import java.util.Scanner;
 
-public class bisiesto {
+public class Bisiesto {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int anho;
