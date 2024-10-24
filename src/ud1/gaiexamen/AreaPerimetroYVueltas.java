@@ -7,7 +7,7 @@ public class AreaPerimetroYVueltas {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         double largo, ancho, areaCiruclo, areaRectangulo, areaTotal,
-                perimetroCirculo, perimetroRectangulo,
+                perimetroCirculo, // perimetroRectangulo,
                 perimetroTotal, metrosExtra;
         int vueltas;
         final double DISTANCIA_MARATON = 21097;
@@ -22,8 +22,9 @@ public class AreaPerimetroYVueltas {
         areaTotal = areaRectangulo + areaCiruclo;
 
         perimetroCirculo = 2 * Math.PI * ancho / 2;
-        perimetroRectangulo = (largo - ancho) * 2 + ancho * 2;
-        perimetroTotal = perimetroCirculo + perimetroRectangulo;
+        // perimetroRectangulo = (largo - ancho) * 2 + ancho * 2;
+        // perimetroTotal = perimetroCirculo + perimetroRectangulo;
+        perimetroTotal = perimetroCirculo + (largo - ancho) * 2;
 
         vueltas = (int) (DISTANCIA_MARATON / perimetroTotal);
         metrosExtra = (DISTANCIA_MARATON % perimetroTotal);
