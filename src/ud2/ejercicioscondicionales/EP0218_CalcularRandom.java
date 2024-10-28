@@ -2,11 +2,14 @@ package ud2.ejercicioscondicionales;
 
 import java.util.Random;
 import java.util.Scanner;
+import java.time.LocalTime;
+// import java.time.Duration; esto nos permitiría hacer Duration.between(inicio, fin);
 
 public class EP0218_CalcularRandom {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Random random = new Random();
+        int segundos = LocalTime.now().getSecond();
         int a = random.nextInt(1, 99);
         int b = random.nextInt(1, 99);
         char operador = ' ';
@@ -40,6 +43,7 @@ public class EP0218_CalcularRandom {
         else{
             System.out.printf("Has fallado... \n%d %s %d = %d",a,operador,b,resultado);
         }
+        System.out.printf("Has tardado %d segundos en responder.",LocalTime.now().getSecond()-segundos);
         
     }
 }
