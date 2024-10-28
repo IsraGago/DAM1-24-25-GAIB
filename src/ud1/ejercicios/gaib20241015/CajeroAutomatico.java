@@ -11,7 +11,7 @@ public class CajeroAutomatico {
         System.out.print("Importe en efectivo que desea retirar (€): ");
         importe = sc.nextDouble();
 
-        //TODO PODER METER CENTIMOS
+        // PODER METER CENTIMOS
 
         // importeDecimal = importe - (int) importe;
 

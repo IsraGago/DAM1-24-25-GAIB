@@ -7,7 +7,7 @@ public class E0214 {
         Scanner sc = new Scanner(System.in);
         int dia, mes, anho;
         String mensaje = "";
-        boolean fechavalida = false;
+        boolean fechavalida = true;
 
         System.out.print("Introduzca el número del día: ");
         dia = sc.nextInt();
