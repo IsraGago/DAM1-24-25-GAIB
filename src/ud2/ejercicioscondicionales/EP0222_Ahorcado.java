@@ -6,7 +6,7 @@ public class EP0222_Ahorcado {
     public static void main(String[] args) {
         int numFallos;
         Scanner sc = new Scanner(System.in);
-        System.out.print("Inserte el número de fallos: ");
+        System.out.print("Inserte el número de fallos (0 - 7): ");
         numFallos = sc.nextInt();
         sc.close();
 
