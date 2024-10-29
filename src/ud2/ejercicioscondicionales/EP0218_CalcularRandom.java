@@ -10,6 +10,7 @@ public class EP0218_CalcularRandom {
         Scanner sc = new Scanner(System.in);
         Random random = new Random();
         int segundos = LocalTime.now().getSecond();
+        // int a = (int) (Math.random() * (MAX - MIN + 1)) + MIN; // genera un número mayor o igual que 1 y menor que 100
         int a = random.nextInt(1, 99);
         int b = random.nextInt(1, 99);
         char operador = ' ';
