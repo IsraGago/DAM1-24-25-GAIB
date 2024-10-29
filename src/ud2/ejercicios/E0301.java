@@ -6,7 +6,7 @@ public class E0301 {
     public static void main(String[] args) {
         int numero;
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduzca un número");
+        System.out.print("Introduzca un número: ");
         numero = sc.nextInt();
         while (numero != 0) {
             if (numero % 2 == 0) {
