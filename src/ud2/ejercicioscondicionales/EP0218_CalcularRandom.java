@@ -10,7 +10,7 @@ public class EP0218_CalcularRandom {
         final int MIN = 1, MAX = 100, MAX_OPERADORES = 4;
         Scanner sc = new Scanner(System.in);
         Random random = new Random();
-        int segundos = LocalTime.now().getSecond();
+        LocalTime horaInicial = LocalTime.now();
         // int a = (int) (Math.random() * (MAX - MIN + 1)) + MIN; // genera un número mayor o igual que 1 y menor que 100
         int a = random.nextInt(MIN, MAX);
         int b = random.nextInt(MIN, MAX);
@@ -39,12 +39,14 @@ public class EP0218_CalcularRandom {
         int respuesta = sc.nextInt();
         sc.close();
 
+        LocalTime horaFinal = LocalTime.now();
         if (respuesta == resultado) {
             System.out.printf("Correcto!!!\n");
         } else {
             System.out.printf("Has fallado... \n%d %s %d = %d", a, operador, b, resultado);
         }
-        System.out.printf("\nHas tardado %d segundos en responder.", LocalTime.now().getSecond() - segundos);
+        
+        System.out.printf("\nHas tardado %d segundos en responder.",horaFinal.toSecondOfDay()-horaInicial.toSecondOfDay());
 
     }
 }
