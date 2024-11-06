@@ -8,28 +8,28 @@ public class EP0314_Primos {
         int contadorPrimos = 0;
         System.out.print("Introduzca un número: ");
         int numero = sc.nextInt();
-        boolean esPrimo;
 
-        for (int i = 1; i <= numero; i++) {
-            esPrimo = true;
-            if (i != 1) {
-                for (int j = 1; j <= i; j++) {
-                    if(i % j == 0){
-                        if (i != j && i != 1){
-                            esPrimo = false;
-                            // continue;
-                        }
-                    }
+        for (int i = 2; i <= numero; i++) { 
+            boolean esPrimo = true;
+
+            for (int j = 2; j <= Math.sqrt(i); j++) {
+                if (i % j == 0) {
+                    esPrimo = false;
+                    break;
                 }
-                String mensaje = esPrimo ? i + " - primo" : i + " - NO primo";
-                System.out.println(mensaje);
-            } else {
-                System.out.println(i + " - primo");
+            }
+
+            if (esPrimo) {
                 contadorPrimos++;
+                System.out.println(i + " - primo.");
+            } else {
+                System.out.println(i + " - NO primo.");
             }
         }
+
         System.out.printf("entre 1 y %d hay %d primos.", numero, contadorPrimos);
 
         sc.close();
     }
+    
 }
