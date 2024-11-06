@@ -8,9 +8,9 @@ public class E0311_facorial {
         System.out.print("Introduzca un número para calcular su factorial: ");
         int numero = sc.nextInt();
         sc.close();
-        int factorial = numero;
+        int factorial = 1;
  
-        for (int i = numero-1; i > 0; i--) {
+        for (int i = numero; i > 1; i--) {
             factorial *= i ;
         }
         System.out.printf("El factorial de %d es %d",numero,factorial);
