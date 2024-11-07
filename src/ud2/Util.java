@@ -2,7 +2,7 @@ package ud2;
 
 public class Util {
 
-    static boolean esPar(int numero) {
+    public static boolean esPar(int numero) {
         return numero % 2 == 0;
     }
 
@@ -28,9 +28,10 @@ public class Util {
             }
         }
         return true;
-        
+
     }
-    static int numCifras (int numero){
+
+    static int numCifras(int numero) {
         numero = Math.abs(numero);
         int cifras = 0;
         while (numero > 0) {
@@ -39,30 +40,103 @@ public class Util {
         }
         return cifras;
     }
-    static String notaEnTexto(int nota){
+
+    static String notaEnTexto(int nota) {
         switch (nota) {
-            case 0,1,2,3,4: return "insuficiente";
-            case 5: return "suficiente";
-            case 6: return "bien";
-            case 7,8: return "notable";
-            case 9,10: return "sobresaliente";
+            case 0, 1, 2, 3, 4:
+                return "insuficiente";
+            case 5:
+                return "suficiente";
+            case 6:
+                return "bien";
+            case 7, 8:
+                return "notable";
+            case 9, 10:
+                return "sobresaliente";
             default:
-                return "Nota inválida (0-10)"; 
+                return "";
         }
     }
 
-    static String diaSemana(int numDia){
+    static String notaEnTexto(double nota) {
+        if (nota < 0 || nota > 10) {
+            return "";
+        }
+
+        String notaEnTexto = "";
+
+        if (nota > 0 && nota < 5) {
+            notaEnTexto = "insuficiente";
+        } else if (nota > 5 && nota < 6) {
+            notaEnTexto = "suficiente";
+        } else if (nota > 6 && nota < 7) {
+            notaEnTexto = "bien";
+        } else if (nota > 7 && nota < 9) {
+            notaEnTexto = "notable";
+        } else if (nota > 9 && nota <= 10) {
+            notaEnTexto = "sobresaliente";
+        }
+        return notaEnTexto;
+    }
+
+    static String diaSemana(int numDia) {
         switch (numDia) {
-            case 1: return "Lunes";
-            case 2: return "Martes";
-            case 3: return "Miércoles";
-            case 4: return "Jueves";
-            case 5: return "Viernes";
-            case 6: return "Sábado";
-            case 7: return "Domingo";
+            case 1:
+                return "Lunes";
+            case 2:
+                return "Martes";
+            case 3:
+                return "Miércoles";
+            case 4:
+                return "Jueves";
+            case 5:
+                return "Viernes";
+            case 6:
+                return "Sábado";
+            case 7:
+                return "Domingo";
             default:
-                return "dia inválido (1-7)"; 
+                return "";
         }
     }
 
+    static boolean esFechaValida(int dia, int mes, int anho) {
+        boolean esDiaValido = false, esMesValido = true;
+        switch (mes) {
+            case 1, 3, 5, 7, 8, 10, 12 -> {
+                if (dia >= 1 && dia <= 31) {
+                    esDiaValido = true;
+                }
+            }
+            case 2 -> {
+                if (esBisiesto(anho)) {
+                    if (dia >= 1 && dia <= 29) {
+                        esDiaValido = true;
+                    }
+                } else if (dia >= 1 && dia <= 28) {
+                    esDiaValido = true;
+                }
+            }
+            case 4, 6, 9, 11 -> {
+                if (dia >= 1 && dia <= 30) {
+                    esDiaValido = true;
+                }
+            }
+            default -> {
+                esMesValido = false;
+            }
+        }
+        return esDiaValido && esMesValido;
+    }
+
+    static boolean esHoraCorrecta(int segundos, int minutos, int horas) {
+        if (segundos > 0 && segundos < 60) {
+            if (minutos > 0 && segundos < 60) {
+                if (horas >= 0 && horas < 24) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
