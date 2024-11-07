@@ -2,7 +2,7 @@ package ud2.ejercicioscondicionales;
 
 import java.util.Scanner;
 
-public class EP0214 {
+public class EP0214_FormatearNumeros {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Inserte un número entero entre 0 y 99: ");
