@@ -2,7 +2,7 @@ package ud2.funciones;
 
 import java.util.Scanner;
 
-public class RecuadroString {
+public class BordearString {
 
     public static void cajaTexto(String str,char caracter){
         imprimirLinea(str,caracter);
