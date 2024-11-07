@@ -3,7 +3,7 @@ package ud2.ejercicioscondicionales;
 import java.util.Random;
 import java.util.Scanner;
 
-public class EP0217 {
+public class EP0217_JuegoSuma {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int numero1 = new Random().nextInt(0, 99);

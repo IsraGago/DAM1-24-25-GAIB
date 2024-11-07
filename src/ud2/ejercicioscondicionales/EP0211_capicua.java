@@ -2,7 +2,7 @@ package ud2.ejercicioscondicionales;
 
 import java.util.Scanner;
 
-public class EP0211 {
+public class EP0211_capicua {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
