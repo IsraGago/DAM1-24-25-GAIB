@@ -6,5 +6,7 @@ import ud2.Util;
 public class LlamadasUtil {
     public static void main(String[] args) {
         Util.esPar(2);
+        boolean esHoraCorrecta = Util.esHoraCorrecta(59, 59, 24);
+        System.out.println(esHoraCorrecta);
     }
 }
