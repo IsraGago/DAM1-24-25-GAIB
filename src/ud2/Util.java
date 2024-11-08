@@ -6,19 +6,19 @@ public class Util {
         return numero % 2 == 0;
     }
 
-    static int mayor(int a, int b) {
+    public static int mayor(int a, int b) {
         return a > b ? a : b;
     }
 
-    static boolean casiCero(double numero) {
+    public static boolean casiCero(double numero) {
         return (numero > -1 && numero < 0) || (numero < 1 && numero > 0);
     }
 
-    static boolean esBisiesto(int year) {
+    public static boolean esBisiesto(int year) {
         return year % 400 == 0 || year % 4 == 0 && year % 100 != 0;
     }
 
-    static boolean esPrimo(int numero) {
+    public static boolean esPrimo(int numero) {
         if (numero <= 1) {
             return false;
         }
@@ -31,7 +31,7 @@ public class Util {
 
     }
 
-    static int numCifras(int numero) {
+    public static int numCifras(int numero) {
         numero = Math.abs(numero);
         int cifras = 0;
         while (numero > 0) {
@@ -41,7 +41,7 @@ public class Util {
         return cifras;
     }
 
-    static String notaEnTexto(int nota) {
+    public static String notaEnTexto(int nota) {
         switch (nota) {
             case 0, 1, 2, 3, 4:
                 return "insuficiente";
@@ -58,7 +58,7 @@ public class Util {
         }
     }
 
-    static String notaEnTexto(double nota) {
+    public static String notaEnTexto(double nota) {
         if (nota < 0 || nota > 10) {
             return "";
         }
@@ -79,7 +79,7 @@ public class Util {
         return notaEnTexto;
     }
 
-    static String diaSemana(int numDia) {
+    public static String diaSemana(int numDia) {
         switch (numDia) {
             case 1:
                 return "Lunes";
@@ -100,7 +100,7 @@ public class Util {
         }
     }
 
-    static boolean esFechaValida(int dia, int mes, int anho) {
+    public static boolean esFechaValida(int dia, int mes, int anho) {
         boolean esDiaValido = false, esMesValido = true;
         switch (mes) {
             case 1, 3, 5, 7, 8, 10, 12 -> {
@@ -129,9 +129,9 @@ public class Util {
         return esDiaValido && esMesValido;
     }
 
-    static boolean esHoraCorrecta(int segundos, int minutos, int horas) {
+    public static boolean esHoraCorrecta(int segundos, int minutos, int horas) {
         if (segundos > 0 && segundos < 60) {
-            if (minutos > 0 && segundos < 60) {
+            if (minutos > 0 && minutos < 60) {
                 if (horas >= 0 && horas < 24) {
                     return true;
                 }
