@@ -1,6 +1,6 @@
 package ud2.ejerciciosfunciones;
 
-public class E0402 {
+public class E0402_numerosComprendidos {
     public static void numerosComprendidosEntre(int a, int b){
         if (a == b) {
             System.out.println("Los números son iguales.");
@@ -13,6 +13,6 @@ public class E0402 {
         }
     }   
     public static void main(String[] args) {
-        numerosComprendidosEntre(30, 70);
+        numerosComprendidosEntre(1, 10);
     } 
 }
