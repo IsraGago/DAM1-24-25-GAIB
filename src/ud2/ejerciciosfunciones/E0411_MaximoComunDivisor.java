@@ -19,5 +19,11 @@ public class E0411_MaximoComunDivisor {
 
     public static void main(String[] args) {
         System.out.println(maximoComunDivisor(57, 30));
+        System.out.println(maximoComunDivisor(4, 8));
+        System.out.println(maximoComunDivisor(12, 30));
+        System.out.println(maximoComunDivisor(0, 30));
+        System.out.println(maximoComunDivisor(12, 0));
+
+
     }
 }
