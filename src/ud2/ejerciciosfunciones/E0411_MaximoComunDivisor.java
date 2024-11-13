@@ -1,8 +1,7 @@
 package ud2.ejerciciosfunciones;
 
 public class E0411_MaximoComunDivisor {
-    static int minimoComunDivisor(int a, int b) {
-
+    static int maximoComunDivisor(int a, int b) {
         if (a == 0) {
             return b;
         } else if (b == 0) {
@@ -10,15 +9,15 @@ public class E0411_MaximoComunDivisor {
         }
 
         if (a >= b) {
-            return minimoComunDivisor(a - b, b);
+            return maximoComunDivisor(a - b, b);
         } else if (b > a) {
-            return minimoComunDivisor(a, b - a);
+            return maximoComunDivisor(a, b - a);
         }
 
         return 0;
     }
 
     public static void main(String[] args) {
-        System.out.println(minimoComunDivisor(25, 30));
+        System.out.println(maximoComunDivisor(57, 30));
     }
 }
