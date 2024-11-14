@@ -1,13 +1,15 @@
 package ud2.practicas;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Supermercado {
+    static Scanner sc = new Scanner(System.in);
     static void pagarConEfectivo(double cantidadEfectivo, double importeAPagar) {
         final int CENTIMOS = 100;
         int cambio = (int) Math.round((cantidadEfectivo - importeAPagar) * CENTIMOS);
         if (importeAPagar > 0) {
-            System.out.printf("El importe a devolver son: %.2f%n", cantidadEfectivo-importeAPagar);
+            System.out.printf("El importe a devolver son: %.2f%n", cantidadEfectivo - importeAPagar);
             int billetes50 = cambio / (50 * CENTIMOS);
             cambio = cambio % (50 * CENTIMOS);
 
@@ -61,17 +63,53 @@ public class Supermercado {
 
     }
 
+    static double leerDouble(String mensaje) {
+        double numero = 0.0;
+        boolean esValorCorrecto = false;
+        while (!esValorCorrecto) {
+            try {
+                System.out.print(mensaje);
+                numero = sc.nextDouble();
+                sc.nextLine();
+                esValorCorrecto = true;
+            } catch (InputMismatchException e) {
+                System.out.println("ERROR: El dato introducido debe ser de tipo double.");
+                // System.out.println(e.toString());
+                sc.nextLine();
+            }
+        }
+        return numero;
+    }
+
+    static int leerInt(String mensaje) {
+        int numero = 0;
+        boolean esValorCorrecto = false;
+        while (!esValorCorrecto) {
+            try {
+                System.out.print(mensaje);
+                numero = sc.nextInt();
+                esValorCorrecto = true;
+
+            } catch (InputMismatchException e) {
+                System.out.println("ERROR: El dato introducido debe ser un entero.");
+                // System.out.println(e.toString());
+                sc.nextLine();
+            }
+        }
+        return numero;
+    }
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        // Scanner sc = new Scanner(System.in);
         double importe, importeTotal = 0;
         int cantidad;
+        int contadorProductos = 1;
 
         do {
-            System.out.print("Introduzca el importe del producto (0 para salir): ");
-            importe = sc.nextDouble();
+            importe = leerDouble("Introduzca el importe del producto ("+contadorProductos+") (0 para salir): ");
             if (importe > 0) {
-                System.out.print("Introduzca la cantidad del producto: ");
-                cantidad = sc.nextInt();
+                contadorProductos++;
+                cantidad = leerInt("Introduzca la cantidad del producto: ");
                 if (importe > 0 && cantidad > 0) {
                     importeTotal += importe * cantidad;
                 } else {
@@ -82,21 +120,17 @@ public class Supermercado {
         } while (importe != 0);
 
         System.out.printf("El importe total de la compra es %.2f%n", importeTotal);
-        System.out.print("Desea pagar con efectivo (1) o tarjeta (2): ");
-        int respuesta = sc.nextInt();
+        int respuesta =leerInt("Desea pagar con efectivo (1) o tarjeta (2): ");
         while (respuesta != 1 && respuesta != 2) {
-            System.out.print("Desea pagar con efectivo (1) o tarjeta (2): ");
-            respuesta = sc.nextInt();
+            respuesta = leerInt("Desea pagar con efectivo (1) o tarjeta (2): ");
         }
 
         switch (respuesta) {
             case 1:
-                System.out.print("Introduzca la cantidad de efectivo: ");
-                double cantidadEfectivo = sc.nextDouble();
+                double cantidadEfectivo = leerDouble("Introduzca la cantidad de efectivo: ");
                 while (cantidadEfectivo < importeTotal) {
                     System.out.println("La cantidad en efectivo debe ser igual o mayor que el importe total");
-                    System.out.print("Introduzca la cantidad de efectivo: ");
-                    cantidadEfectivo = sc.nextDouble();
+                    cantidadEfectivo = leerDouble("Introduzca la cantidad de efectivo: ");
                 }
                 pagarConEfectivo(cantidadEfectivo, importeTotal);
                 break;
@@ -108,7 +142,6 @@ public class Supermercado {
 
         }
 
-        sc.close();
         System.out.println("Gracias por su compra, vuelva pronto!!");
 
     }
