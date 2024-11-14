@@ -159,4 +159,31 @@ public class Util {
         return false;
     }
 
+    public static String numeroAtexto(int i){
+        if (i < 1 || i > 99) {return "";}
+
+        int decenas = i / 10; // obtengo las decenas entre 0 y 9;
+        switch (decenas) {
+            case 0: break;
+            case 2: break;
+            case 3: break;
+            case 4: break;
+            case 5: break;
+        }
+
+        String strUnidades = "";
+        switch (i) {
+            case 1: strUnidades = "uno"; break;
+            case 2: strUnidades = "dos"; break;
+            case 3: strUnidades = "tres"; break;
+            case 4: strUnidades = "cuatro"; break;
+            case 5: strUnidades = "cinco"; break;
+            case 6: strUnidades = "seis"; break;
+            case 7: strUnidades = "siete"; break;
+            case 8: strUnidades = "ocho"; break;
+            case 9: strUnidades = "nueve"; break;
+        }
+        return strUnidades;
+    }
+
 }
