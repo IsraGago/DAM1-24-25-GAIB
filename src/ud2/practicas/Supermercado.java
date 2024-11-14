@@ -9,7 +9,8 @@ public class Supermercado {
         final int CENTIMOS = 100;
         int cambio = (int) Math.round((cantidadEfectivo - importeAPagar) * CENTIMOS);
         if (importeAPagar > 0) {
-            System.out.printf("El importe a devolver son: %.2f%n", cantidadEfectivo - importeAPagar);
+            System.out.println("-------------------------------------------------------------------------");
+            System.out.printf("El importe a devolver son: %.2f euros%n", cantidadEfectivo - importeAPagar);
             int billetes50 = cambio / (50 * CENTIMOS);
             cambio = cambio % (50 * CENTIMOS);
 
@@ -45,22 +46,29 @@ public class Supermercado {
 
             int centimos1 = cambio;
 
-            System.out.printf("cantidad de billetes de 50 euros: %d%n", billetes50);
-            System.out.printf("cantidad de billetes de 20 euros: %d%n", billetes20);
-            System.out.printf("cantidad de billetes de 10 euros: %d%n", billetes10);
-            System.out.printf("cantidad de billetes de 5 euros: %d%n", billetes5);
-            System.out.printf("cantidad de monedas de 2 euros: %d%n", euros2);
-            System.out.printf("cantidad de monedas de 1 euro: %d%n", euros1);
-            System.out.printf("cantidad de monedas de 50 centimos: %d%n", centimos50);
-            System.out.printf("cantidad de monedas de 20 centimos: %d%n", centimos20);
-            System.out.printf("cantidad de monedas de 10 centimos: %d%n", centimos10);
-            System.out.printf("cantidad de monedas de 5 centimos: %d%n", centimos5);
-            System.out.printf("cantidad de monedas de 2 centimos: %d%n", centimos2);
-            System.out.printf("cantidad de monedas de 1 centimos: %d%n", centimos1);
+            imprimirCantidadDinero("billetes de 50 euros", billetes50);
+            imprimirCantidadDinero("billetes de 20 euros", billetes20);
+            imprimirCantidadDinero("billetes de 10 euros", billetes10);
+            imprimirCantidadDinero("billetes de 5 euros", billetes5);
+            imprimirCantidadDinero("monedas de 2 euros", euros2);
+            imprimirCantidadDinero("monedas de 1 euro", euros1);
+            imprimirCantidadDinero("monedas de 50 centimos", centimos50);
+            imprimirCantidadDinero("monedas de 20 centimos", centimos20);
+            imprimirCantidadDinero("monedas de 10 centimos", centimos10);
+            imprimirCantidadDinero("monedas de 5 centimos", centimos5);
+            imprimirCantidadDinero("monedas de 2 centimos", centimos2);
+            imprimirCantidadDinero("monedas de 1 centimos", centimos1);
+
         } else {
             System.out.println("Importe justo, no sobra dinero.");
         }
 
+    }
+
+    static void imprimirCantidadDinero(String mensaje,int cantidad){
+        if (cantidad > 0) {
+            System.out.printf("Cantidad de "+mensaje+": %d%n", cantidad);
+        }
     }
 
     static double leerDouble(String mensaje) {
