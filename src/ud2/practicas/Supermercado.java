@@ -11,57 +11,36 @@ public class Supermercado {
         if (importeAPagar > 0) {
             System.out.println("-------------------------------------------------------------------------");
             System.out.printf("El importe a devolver son: %.2f euros%n", cantidadEfectivo - importeAPagar);
-            int billetes50 = cambio / (50 * CENTIMOS);
-            cambio = cambio % (50 * CENTIMOS);
+            
+            cambio = calcularCambio(cambio, 50 * CENTIMOS, "billetes de 50 euros");
+            cambio = calcularCambio(cambio, 20 * CENTIMOS, "billetes de 20 euros");
+            cambio = calcularCambio(cambio, 10 * CENTIMOS, "billetes de 10 euros");
+            cambio = calcularCambio(cambio, 5 * CENTIMOS, "billetes de 5 euros");
 
-            int billetes20 = cambio / (20 * CENTIMOS);
-            cambio = cambio % (20 * CENTIMOS);
+            cambio = calcularCambio(cambio, 2 * CENTIMOS, "monedas de 2 euros");
+            cambio = calcularCambio(cambio, 1 * CENTIMOS, "monedas de 1 euros");
+            
+            cambio = calcularCambio(cambio, 50 , "monedas de 50 céntimos");
+            cambio = calcularCambio(cambio, 20 , "monedas de 20 céntimos");
+            cambio = calcularCambio(cambio, 10 , "monedas de 10 céntimos");
+            cambio = calcularCambio(cambio, 5 , "monedas de 5 céntimos");
+            cambio = calcularCambio(cambio, 2 , "monedas de 2 céntimos");
+            cambio = calcularCambio(cambio, 1 , "monedas de 1 céntimos");
 
-            int billetes10 = cambio / (10 * CENTIMOS);
-            cambio = cambio % (10 * CENTIMOS);
-
-            int billetes5 = cambio / (5 * CENTIMOS);
-            cambio = cambio % (5 * CENTIMOS);
-
-            int euros2 = cambio / (2 * CENTIMOS);
-            cambio = cambio % (2 * CENTIMOS);
-
-            int euros1 = cambio / (1 * CENTIMOS);
-            cambio = cambio % (1 * CENTIMOS);
-
-            int centimos50 = cambio / 50;
-            cambio = cambio % 50;
-
-            int centimos20 = cambio / 20;
-            cambio = cambio % 20;
-
-            int centimos10 = cambio / 10;
-            cambio = cambio % 10;
-
-            int centimos5 = cambio / 5;
-            cambio = cambio % 5;
-
-            int centimos2 = cambio / 2;
-            cambio = cambio % 2;
-
-            int centimos1 = cambio;
-
-            imprimirCantidadDinero("billetes de 50 euros", billetes50);
-            imprimirCantidadDinero("billetes de 20 euros", billetes20);
-            imprimirCantidadDinero("billetes de 10 euros", billetes10);
-            imprimirCantidadDinero("billetes de 5 euros", billetes5);
-            imprimirCantidadDinero("monedas de 2 euros", euros2);
-            imprimirCantidadDinero("monedas de 1 euro", euros1);
-            imprimirCantidadDinero("monedas de 50 centimos", centimos50);
-            imprimirCantidadDinero("monedas de 20 centimos", centimos20);
-            imprimirCantidadDinero("monedas de 10 centimos", centimos10);
-            imprimirCantidadDinero("monedas de 5 centimos", centimos5);
-            imprimirCantidadDinero("monedas de 2 centimos", centimos2);
-            imprimirCantidadDinero("monedas de 1 centimos", centimos1);
 
         } else {
             System.out.println("Importe justo, no sobra dinero.");
         }
+
+    }
+    static int calcularCambio(int cambio, int valor, String mensaje){
+        if (cambio == 1) {
+            return 1;
+        }
+        int cantidad = cambio / valor;
+        cambio = cambio % valor;
+        imprimirCantidadDinero(mensaje, cantidad);
+        return cambio;
 
     }
 
