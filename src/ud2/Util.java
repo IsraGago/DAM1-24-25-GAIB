@@ -160,19 +160,47 @@ public class Util {
     }
 
     public static String numeroAtexto(int i){
+        // OTRA FORMA DE HACER ESTA FUNCION EN EL EJERCICIO  "../ejercicioscondicionales/EP0214_FormatearNumeros.java"
         if (i < 1 || i > 99) {return "";}
-
+        
+        String numeroAtexto = "";
         int decenas = i / 10; // obtengo las decenas entre 0 y 9;
+        int unidades = i % 10;
         switch (decenas) {
-            case 0: break;
-            case 2: break;
-            case 3: break;
-            case 4: break;
-            case 5: break;
+            case 0: numeroAtexto = numero1CifraATexto(i); break;
+            case 1: switch (i) {
+                case 10: numeroAtexto = "diez"; break;
+                case 11: numeroAtexto = "once"; break;
+                case 12: numeroAtexto = "doce"; break;
+                case 13: numeroAtexto = "trece"; break;
+                case 14: numeroAtexto = "catorce"; break;
+                case 15: numeroAtexto = "quince"; break;
+                case 16,17,18,19: numeroAtexto = "dieci"+numero1CifraATexto(unidades); break;            
+            } break;
+            case 2: if (unidades == 0) {numeroAtexto = "veinte";} else {numeroAtexto = "veinti";} break;
+            case 3: numeroAtexto = "treinta"; break;
+            case 4: numeroAtexto = "cuarenta"; break;
+            case 5: numeroAtexto = "cincuenta"; break;
+            case 6: numeroAtexto = "sesenta"; break; 
+            case 7: numeroAtexto = "setenta"; break;
+            case 8: numeroAtexto = "ochenta"; break; 
+            case 9: numeroAtexto = "noventa"; break;
         }
 
+        if (unidades > 0 && decenas > 2) {
+            numeroAtexto += " y "+numero1CifraATexto(unidades);
+        } else if (unidades > 0 && decenas == 2){
+            numeroAtexto += numero1CifraATexto(unidades);
+        }
+        return numeroAtexto;
+
+
+
+    }
+    public static String numero1CifraATexto(int i){
         String strUnidades = "";
         switch (i) {
+            case 0: strUnidades = "cero"; break;
             case 1: strUnidades = "uno"; break;
             case 2: strUnidades = "dos"; break;
             case 3: strUnidades = "tres"; break;
