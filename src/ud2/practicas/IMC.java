@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
+
 public class IMC {
     static double imc(double kg, double cm){
         double metros = cm / 100;
