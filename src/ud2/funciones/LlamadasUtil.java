@@ -5,7 +5,8 @@ import ud2.Util;
 
 public class LlamadasUtil {
     public static void main(String[] args) {
-        Util.imrpimirTrianguloRectangulo(5);
-        Util.imrpimirTrianguloRectanguloInverso(5);
+        for (int i = 0; i < 100; i++) {
+            System.out.println(i+" - "+Util.numeroAtexto(i));
+        }
     }
 }
