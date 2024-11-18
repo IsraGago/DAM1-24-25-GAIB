@@ -6,8 +6,9 @@ public class E0310 {
         int contadorImpares = 0;
         final int MAX = 10;
         for (int i = 0; contadorImpares < MAX; i++) {
-            if (i % 2 == 0) {
+            if (i % 2 != 0) {
                 contadorImpares++;
+                System.out.println(i);
                 suma += i;
             }
         }
