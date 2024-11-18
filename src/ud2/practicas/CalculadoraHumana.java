@@ -63,7 +63,7 @@ public class CalculadoraHumana {
     }
 
     static char operadorAleatorio(int operando1) {
-        int max = operando1 > 100 ? 4 : 5 ;
+        int max = operando1 > MAX - 1 ? 4 : 5 ;
         switch (rd.nextInt(1, max)) {
             case 1:
                 return '+';
