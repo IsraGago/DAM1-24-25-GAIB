@@ -89,8 +89,7 @@ public class CalculadoraHumana {
                 sc.nextLine();
             }
         }
-        
-
+    
         return numero;
     }
     public static void main(String[] args) {

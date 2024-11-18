@@ -1,11 +1,49 @@
 package ud2.practicas;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class IMC {
+    static Scanner sc = new Scanner(System.in);
+
+    static int leerInt(String mensaje){
+        int numero = 0;
+        boolean esValido = false;
+        while (!esValido) {
+            try {
+                System.out.print(mensaje);
+                numero = sc.nextInt();
+                sc.nextLine();
+                esValido = true;
+            } catch (InputMismatchException e) {
+                System.out.println("ERROR: el valor introducido debe ser un entero.");
+                sc.nextLine();
+            }
+        }
+    
+        return numero;
+    }
+    static double leerDouble(String mensaje){
+        double numero = 0.0;
+        boolean esValido = false;
+        while (!esValido) {
+            try {
+                System.out.print(mensaje);
+                numero = sc.nextDouble();
+                sc.nextLine();
+                esValido = true;
+            } catch (InputMismatchException e) {
+                System.out.println("ERROR: el valor introducido debe ser double.");
+                sc.nextLine();
+            }
+        }
+    
+        return numero;
+    }
+
     static double imc(double kg, double cm){
         double metros = cm / 100;
         return kg / Math.pow(metros, 2);
@@ -25,23 +63,17 @@ public class IMC {
 
     }
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        System.out.print("Introduzca su peso en kg: ");
-        double kg = sc.nextDouble();
+        double kg = leerDouble("Introduzca su peso en kg: ");
         while (kg < 20 || kg > 300 ) {
             System.out.println("El valor debe estar comprendido entre 20 y 300 kg");
-            System.out.print("Introduzca su peso en kg: ");
-            kg = sc.nextDouble();
+            kg = leerDouble("Introduzca su peso en kg: ");
         }
-        System.out.print("Introduzca su altura en cm: ");
-        double cm = sc.nextDouble();
-        while (cm < 50 || kg > 250 ) {
+        double cm = leerInt("Introduzca su altura en cm: ");
+        while (cm < 50 || cm > 250 ) {
             System.out.println("El valor debe estar comprendido entre 50 y 250 cm");
-            System.out.print("Introduzca su altura en cm: ");
-            cm = sc.nextDouble();
+            cm = leerInt("Introduzca su altura en cm: ");
         }
-        sc.close();
         double imc = imc(kg, cm);
         System.out.println("Su IMC es de "+String.format("%.2f", imc));
         System.out.print("Según la OMS, su clasificación es: ");
