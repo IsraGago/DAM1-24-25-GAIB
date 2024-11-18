@@ -1,10 +1,12 @@
 package ud2.practicas;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
 public class CalculadoraHumana {
-    static final int MAX = 200;
+    static Scanner sc = new Scanner(System.in);
+    static final int MAX = 201;
     static final int MIN = 1;
     static final int NUM_OPERACIONES_MAXIMAS = 7;
     static final int NUM_FALLOS_MAXIMOS = 10;
@@ -27,7 +29,7 @@ public class CalculadoraHumana {
         if (!esPrimo(operando1)) {
 
             int operando2 = rd.nextInt(MIN, MAX);
-            while (operando1 % operando2 != 0 || operando2 == 1) {
+            while (operando1 % operando2 != 0 || operando2 == 1 || operando1 == operando2) {
                 operando2 = rd.nextInt(MIN, MAX);
             }
             return operando2;
@@ -47,6 +49,7 @@ public class CalculadoraHumana {
         int operando2 = rd.nextInt(MIN, MAX);
         while (operando1 - operando2 < MIN) {
             operando2 = rd.nextInt(MIN, MAX);
+            // System.out.println(operando2);
         }
         return operando2;
     }
@@ -59,34 +62,50 @@ public class CalculadoraHumana {
         return operando2;
     }
 
-    static char operadorAleatorio() {
-        switch (rd.nextInt(1, 5)) {
+    static char operadorAleatorio(int operando1) {
+        int max = operando1 > 100 ? 4 : 5 ;
+        switch (rd.nextInt(1, max)) {
             case 1:
                 return '+';
             case 2:
                 return '-';
             case 3:
-                return '*';
-            case 4:
                 return '/';
+            case 4:
+                return '*';
         }
         return ' ';
     }
+    static int leerInt(){
+        int numero = 0;
+        boolean esValido = false;
+        while (!esValido) {
+            try {
+                numero = sc.nextInt();
+                sc.nextLine();
+                esValido = true;
+            } catch (InputMismatchException e) {
+                System.out.println("ERROR: el valor introducido debe ser un entero.");
+                sc.nextLine();
+            }
+        }
+        
 
+        return numero;
+    }
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         int numFallos = 0;
         int numAciertos = 0;
-        int resultado = 0, respuesta = 0;
+        int resultado = 0, respuesta = -1;
         int operando1, operando2 = 0;
         char operador = ' ';
 
         System.out.println("LA CALCULADORA HUMANA");
 
         while (numAciertos < NUM_OPERACIONES_MAXIMAS && numFallos < NUM_FALLOS_MAXIMOS) {
-            operador = operadorAleatorio();
 
             operando1 = numAciertos == 0 ? rd.nextInt(MIN, MAX + 1) : resultado;
+            operador = operadorAleatorio(operando1);
 
             switch (operador) {
                 case '+':
@@ -108,7 +127,7 @@ public class CalculadoraHumana {
             }
 
             System.out.printf("%d %c %d = ", operando1, operador, operando2);
-            respuesta = sc.nextInt();
+            respuesta = leerInt();            
 
             if (respuesta == resultado) {
                 numAciertos++;
@@ -124,7 +143,5 @@ public class CalculadoraHumana {
         } else {
             System.out.println("Límite de fallos alcanzado. Fin del juego.");
         }
-
-        sc.close();
     }
 }

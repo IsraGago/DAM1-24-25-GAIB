@@ -1,12 +1,15 @@
 package ud2.practicas;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+
 import java.util.Scanner;
 
 public class Radar {
     static int excesoVelocidad(double distancia, int tiempo, int limite) {
         double tiempoHoras = tiempo / 3600.0;
         double velocidadMedia = distancia / tiempoHoras;
-        System.out.printf("LLevaba una velocidad media de %.2f km/h%n",velocidadMedia);
+        System.out.printf("LLevaba una velocidad media de %.2f km/h%n", velocidadMedia);
         if (velocidadMedia > limite) {
             return (int) velocidadMedia - limite;
         } else {
@@ -19,13 +22,13 @@ public class Radar {
         if (limite <= 50 && excesoVelocidad > 0) {
             if (excesoVelocidad <= 20) {
                 multa = 100;
-            } else if (excesoVelocidad <= 30){
+            } else if (excesoVelocidad <= 30) {
                 multa = 300;
-            } else if (excesoVelocidad <= 40){
+            } else if (excesoVelocidad <= 40) {
                 multa = 400;
-            } else if (excesoVelocidad <= 50){
+            } else if (excesoVelocidad <= 50) {
                 multa = 500;
-            }else {
+            } else {
                 multa = 600;
             }
         } else if (limite >= 60 && excesoVelocidad > 0) {
@@ -35,7 +38,7 @@ public class Radar {
                 multa = 300;
             } else if (excesoVelocidad <= 60) {
                 multa = 400;
-            } else if (excesoVelocidad <= 70){
+            } else if (excesoVelocidad <= 70) {
                 multa = 500;
             } else {
                 multa = 600;
@@ -56,12 +59,21 @@ public class Radar {
         int exceso = excesoVelocidad(DISTANCIA, segundos, LIMITE_VELOCIDAD);
         if (exceso > 0) {
             int multa = multaInfraccion(LIMITE_VELOCIDAD, exceso);
-            System.out.println("El exceso ha sido de "+exceso+" km/h");
-            System.out.println("La multa es de "+multa+" euros.");
+            System.out.println("El exceso ha sido de " + exceso + " km/h");
+            System.out.println("La multa es de " + multa + " euros.");
 
         } else {
             System.out.println("No ha habido exceso de velocidad.");
         }
+    }
 
+    @Test
+    void testImc() {
+        double resultadoCaso1 = excesoVelocidad(10, 600, 60);
+        assertEquals(0, resultadoCaso1);
+        double resultadoCaso2 = excesoVelocidad(10, 600, 50);
+        assertEquals(10, resultadoCaso2);
+        double resultadoCaso3 = excesoVelocidad(10, 600, 30);
+        assertEquals(30, resultadoCaso3);
     }
 }
