@@ -7,21 +7,24 @@ import java.util.Scanner;
 public class MenuDeFiguras {
     static Scanner sc = new Scanner(System.in);
 
+    static void mensajeFallos(int numFallos) {
+        System.out.println("ERROR: Opción inválida");
+        System.out.printf("Llevas %d fallo/s, a los 3 fallos el programa se cerrará %n", numFallos);
+        System.out.println("----------------------------------------------------------------------");
+    }
+
     static int leerIntEntre2Y20(String mensaje) {
         int numero = 0;
-        while (numero < 2 || numero > 20) {
-            boolean esValorCorrecto = false;
-            while (!esValorCorrecto) {
-                try {
-                    System.out.print(mensaje);
-                    numero = sc.nextInt();
-                    esValorCorrecto = true;
-
-                } catch (InputMismatchException e) {
-                    System.out.println("ERROR: El dato introducido debe ser un entero.");
-                    sc.nextLine();
-                }
+        try {
+            System.out.print(mensaje);
+            numero = sc.nextInt();
+            if (numero < 2 || numero > 20) {
+                System.out.println("ERROR: El dato introducido debe ser un entero entre 2 y 20.");
             }
+
+        } catch (InputMismatchException e) {
+            System.out.println("ERROR: El dato introducido debe ser un entero.");
+            sc.nextLine();
 
         }
         return numero;
@@ -44,26 +47,23 @@ public class MenuDeFiguras {
                     respuestaValida = true;
                 } else {
                     contadorErrores++;
-                    System.out.println("ERROR: Opción inválida");
-                    System.out.printf("Llevas %d fallos, a los 3 fallos el programa se cerrará %n", contadorErrores);
-                    System.out.println("----------------------------------------------------------------------");
+                    mensajeFallos(contadorErrores);
                 }
 
             } catch (Exception e) {
                 contadorErrores++;
                 sc.nextLine();
-                System.out.println("ERROR: Opción inválida");
-                System.out.printf("Llevas %d fallos, a los 3 fallos el programa se cerrará %n", contadorErrores);
-                System.out.println("----------------------------------------------------------------------");
+                mensajeFallos(contadorErrores);
             }
         }
-        return respuesta;
+        return contadorErrores == 3 ? -1 : respuesta;
     }
 
-    public static void dibujarTriangulo() {
+    public static int dibujarTriangulo() { // retorna -1 si el número es inválido
         int numero = 0;
 
         numero = leerIntEntre2Y20("Introduzca un número entero entre 2 y 20: ");
+        if (numero == 0) {return -1;}
 
         for (int i = 1; i <= numero; i++) {
             for (int j = 1; j <= numero - i; j++) {
@@ -77,15 +77,18 @@ public class MenuDeFiguras {
             System.out.println();
         }
 
+        return 0;
+
     }
 
-    public static void dibujarRectangulo() {
+    public static int dibujarRectangulo() { //  retorna -1 si la base es inválida o -2 si la altura es inválida
         int base = 0;
-
         base = leerIntEntre2Y20("Introduzca un número entero entre 2 y 20 para la base: ");
+        if (base == 0) {return -1;}
 
         int altura = 0;
         altura = leerIntEntre2Y20("Introduzca un número entero entre 2 y 20 para la altura: ");
+        if (altura == 0) {return -2;}
 
         System.out.println("");
         for (int i = 0; i < altura; i++) {
@@ -94,6 +97,7 @@ public class MenuDeFiguras {
             }
             System.out.println();
         }
+        return 0;
     }
 
     public static void main(String[] args) {
@@ -102,10 +106,14 @@ public class MenuDeFiguras {
             respuesta = menu();
             switch (respuesta) {
                 case 1:
-                    dibujarTriangulo();
+                if (dibujarRectangulo() != 0) { // si devuelve 0 significa que todo fue bien
+                    respuesta = 0;
+                }
                     break;
                 case 2:
-                    dibujarRectangulo();
+                if (dibujarRectangulo() != 0) { // si devuelve 0 significa que todo fue bien
+                    respuesta = 0;
+                };
                     break;
                 default:
                     break;
