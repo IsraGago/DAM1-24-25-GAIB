@@ -36,12 +36,12 @@ public class ChiclesDeRegalo {
     assertEquals(-1, totalChicles(10, 1, -1));
     assertEquals(-1, totalChicles(20, 2, 2));
     assertEquals(10, totalChicles(7, 3, 1));
-    assertEquals(40, totalChicles(27, 3, 1)); // mal
-    assertEquals(21, totalChicles(11, 2, 1)); // mal
-    assertEquals(31, totalChicles(16, 2, 1)); // mal
+    assertEquals(40, totalChicles(27, 3, 1));
+    assertEquals(21, totalChicles(11, 2, 1));
+    assertEquals(31, totalChicles(16, 2, 1)); 
     assertEquals(100, totalChicles(100, 0, 0));
     assertEquals(100, totalChicles(100, 0, 1));
     assertEquals(0, totalChicles(0, 0, 1));
-    assertEquals(0, totalChicles(0, 2, 1)); // mal
+    assertEquals(0, totalChicles(0, 2, 1)); 
     }
 }
