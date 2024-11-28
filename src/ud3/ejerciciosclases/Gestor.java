@@ -32,4 +32,10 @@ public class Gestor {
     public double getImporteMaximo() {
         return importeMaximo;
     }
+
+    public void mostrar(){
+        System.out.println("Nombre: "+nombreGestor);
+        System.out.println("Teléfono: "+telefono);
+        System.out.println("Importe máximo autorizado: "+importeMaximo);
+    }
 }
