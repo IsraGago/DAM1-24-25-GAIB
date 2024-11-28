@@ -13,7 +13,9 @@ public class Calendario {
             this.dia = dia;
         }
     }
-
+    boolean iguales(Calendario fecha1, Calendario fecha2){
+        return fecha1.año == fecha2.año && fecha1.mes == fecha2.mes && fecha1.dia == fecha2.dia;
+    }
     public void incrementarMes() {
         mes++;
         if (mes > 12) {
@@ -22,8 +24,8 @@ public class Calendario {
         }
     }
 
-    public void incrementarAño() {
-        año++;
+    public void incrementarAño(int cantidad) {
+        año += cantidad;
     }
 
     public void incrementarDia() {
