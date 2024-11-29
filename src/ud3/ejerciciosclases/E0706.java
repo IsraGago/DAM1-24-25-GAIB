@@ -11,7 +11,7 @@ public class E0706 {
         int minutos = sc.nextInt();
         System.out.print("Introduzca los segundos: ");
         int segundos = sc.nextInt();
-        System.out.print("Introduzca un número: ");
+        System.out.print("Número de incrementos de 1 segundo: ");
         int numero = sc.nextInt();
         sc.close();
 
@@ -23,6 +23,7 @@ public class E0706 {
                 hora.mostrar();
             }
         } catch (Exception e) {
+            System.out.println("ERROR: horas, minutos o segundos con formato incorrecto.");
             e.toString();
         }
         

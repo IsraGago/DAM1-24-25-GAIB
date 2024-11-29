@@ -6,34 +6,36 @@ public class Hora {
     private int segundos;
 
     public Hora(int horas, int minutos, int segundos) throws Exception {
-        boolean esHoraCorrecta = horas < 24 && horas >= 0 && minutos >= 0 && minutos < 60 && segundos >= 0 && segundos < 60 ;
+        boolean esHoraCorrecta = horas < 24 && horas >= 0 && minutos >= 0 && minutos < 60 && segundos >= 0
+                && segundos < 60;
         if (esHoraCorrecta) {
             this.horas = horas;
             this.minutos = minutos;
             this.segundos = segundos;
-        }
-         else {
-            throw new Exception("ERROR: parámetros incorrectos");
+        } else {
+            throw new Exception("ERROR: horas, minutos o segundos con formato incorrecto.");
         }
     }
 
-    public void incrementarSegundo(){
+    public void incrementarSegundo() {
         segundos++;
-        if (segundos >= 60) {
+        if (segundos == 60) {
             segundos = 0;
             minutos++;
-            if (minutos >= 60) {
+            if (minutos == 60) {
                 minutos = 0;
                 horas++;
-                if (horas >= 24) {
+                if (horas == 24) {
                     horas = 0;
                 }
             }
         }
     }
 
-    public void mostrar(){
-        System.out.printf("%d:%d:%d%n",horas,minutos,segundos);
+    public void mostrar() {
+        System.out.println((horas < 10 ? "0" + horas : horas) + ":" + (minutos < 10 ? "0" + minutos : minutos) + ":"
+                + (segundos < 10 ? "0" + segundos : segundos));
+        // System.out.printf("%d:%d:%d%n", horas, minutos, segundos);
     }
 
     public int getHoras() {
@@ -41,7 +43,9 @@ public class Hora {
     }
 
     public void setHoras(int horas) {
-        this.horas = horas;
+        if (horas >= 0 || horas <= 23) {
+            this.horas = horas;
+        }
     }
 
     public int getMinutos() {
@@ -49,7 +53,9 @@ public class Hora {
     }
 
     public void setMinutos(int minutos) {
-        this.minutos = minutos;
+        if (minutos >= 0 || minutos <= 58) {
+            this.minutos = minutos;
+        }
     }
 
     public int getSegundos() {
@@ -57,7 +63,9 @@ public class Hora {
     }
 
     public void setSegundos(int segundos) {
-        this.segundos = segundos;
+        if (segundos >= 0 || segundos <= 59) {
+            this.segundos = segundos;
+        }
     }
 
 }
