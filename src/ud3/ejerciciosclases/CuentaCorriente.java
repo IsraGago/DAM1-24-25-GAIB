@@ -16,10 +16,12 @@ public class CuentaCorriente {
         }
 
     }
-    CuentaCorriente(String titular, String dni, double saldo){
-        this(titular, dni, saldo,null);
+
+    CuentaCorriente(String titular, String dni, double saldo) {
+        this(titular, dni, saldo, null);
 
     }
+
     CuentaCorriente(String dni, double saldo, Gestor gestor) {
         this("", dni, saldo, gestor);
     }
@@ -50,8 +52,9 @@ public class CuentaCorriente {
     }
 
     public boolean transferir(CuentaCorriente cuenta, double importe) {
-        boolean esTransferenciaPosible = importe <= this.saldo;
-        if (esTransferenciaPosible) {
+        boolean esTransferenciaPosible = false;
+        if (cuenta != null && importe <= this.saldo) { // evaluación por cortocirquito
+            esTransferenciaPosible = true;
             this.saldo -= importe;
             cuenta.saldo += importe;
         }
@@ -68,12 +71,14 @@ public class CuentaCorriente {
 
     public static boolean transferencia(CuentaCorriente cuentaQuePaga, CuentaCorriente cuentaQueRecibe,
             double importe) {
-        boolean esTransferenciaPosible = importe <= cuentaQuePaga.saldo;
-        if (esTransferenciaPosible) {
+        boolean esTransferenciaPosible = false;
+        if (cuentaQuePaga != null && cuentaQueRecibe != null && importe <= cuentaQuePaga.saldo) { // evaluación por cortocirquito
+            esTransferenciaPosible = true;
             cuentaQuePaga.saldo -= importe;
             cuentaQueRecibe.saldo += importe;
         }
         return esTransferenciaPosible;
+
     }
 
     public Gestor getGestor() {
