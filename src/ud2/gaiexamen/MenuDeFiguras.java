@@ -106,7 +106,7 @@ public class MenuDeFiguras {
             respuesta = menu();
             switch (respuesta) {
                 case 1:
-                if (dibujarRectangulo() != 0) { // si devuelve 0 significa que todo fue bien
+                if (dibujarTriangulo() != 0) { // si devuelve 0 significa que todo fue bien
                     respuesta = 0;
                 }
                     break;
