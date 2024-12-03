@@ -43,7 +43,7 @@ public class Hora {
     }
 
     public void setHoras(int horas) {
-        if (horas >= 0 || horas <= 23) {
+        if (horas >= 0 && horas <= 23) {
             this.horas = horas;
         }
     }
@@ -53,7 +53,7 @@ public class Hora {
     }
 
     public void setMinutos(int minutos) {
-        if (minutos >= 0 || minutos <= 58) {
+        if (minutos >= 0 && minutos <= 58) {
             this.minutos = minutos;
         }
     }
@@ -63,7 +63,7 @@ public class Hora {
     }
 
     public void setSegundos(int segundos) {
-        if (segundos >= 0 || segundos <= 59) {
+        if (segundos >= 0 && segundos <= 59) {
             this.segundos = segundos;
         }
     }
