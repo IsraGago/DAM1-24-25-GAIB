@@ -2,14 +2,10 @@ package ud3.ejerciciosclases;
 
 public class Bombilla {
     private boolean estaEncendida = false;
-    private static boolean hayLuz = true;
+    private static boolean hayLuz = false;
 
-    public boolean getEstado() {
-        if (estaEncendida && hayLuz) {
-            return estaEncendida;
-        } else {
-            return false;
-        }
+    public boolean estado() {
+        return estaEncendida && hayLuz;
     }
 
     public void interruptor() {
