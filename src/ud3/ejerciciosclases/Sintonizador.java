@@ -8,12 +8,11 @@ public class Sintonizador {
     public static final double FRECUENCIA_MAX = 108;
     public static final double FRECUENCIA_MIN = 80;
 
-    Sintonizador(double frecuencia) throws Exception {
-        if (esFrecuenciaValida(frecuencia)) {
-            this.frecuencia = frecuencia;
-        } else {
-            throw new Exception(
-                    "Frecuencia inválida, debe estar comprendida entre " + FRECUENCIA_MIN + " y " + FRECUENCIA_MAX);
+    Sintonizador(double frecuencia) {
+        try {
+            setFrecuencia(frecuencia);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -25,9 +24,13 @@ public class Sintonizador {
         return frecuencia;
     }
 
-    public void setFrecuencia(double frecuencia) {
+    public void setFrecuencia(double frecuencia) throws IllegalArgumentException {
         if (esFrecuenciaValida(frecuencia)) {
             this.frecuencia = frecuencia;
+        } else {
+            throw new IllegalArgumentException(
+                    "Frecuencia inválida, debe estar comprendida entre " + FRECUENCIA_MIN + " y " + FRECUENCIA_MAX
+                            + " MHz");
         }
     }
 
@@ -36,34 +39,29 @@ public class Sintonizador {
     }
 
     // SUBIR Y BAJAR FRECUENCIAS
-    private void subirFrecuencia(double incremento) {
+    private void cambiarFrecuencia(double incremento) {
         frecuencia += incremento;
         if (frecuencia > FRECUENCIA_MAX) {
             frecuencia = FRECUENCIA_MIN;
-        }
-    }
-
-    private void bajarFrecuencia(double decremento) {
-        frecuencia -= decremento;
-        if (frecuencia < FRECUENCIA_MIN) {
+        } else if (frecuencia < FRECUENCIA_MIN) {
             frecuencia = FRECUENCIA_MAX;
         }
     }
 
     public void up() {
-        subirFrecuencia(0.5);
+        cambiarFrecuencia(0.5);
     }
 
     public void down() {
-        bajarFrecuencia(0.5);
+        cambiarFrecuencia(-0.5);
     }
 
     public void upLow() {
-        subirFrecuencia(0.1);
+        cambiarFrecuencia(0.1);
     }
 
     public void downLow() {
-        bajarFrecuencia(0.1);
+        cambiarFrecuencia(-0.1);
     }
 
     // GESTIÓN MEMORIAS

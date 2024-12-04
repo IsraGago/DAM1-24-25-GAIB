@@ -6,26 +6,33 @@ public class Calendario {
     public int mes;
     public int dia;
 
-    Calendario(int año, int mes, int dia) {
+    Calendario(int año, int mes, int dia) throws IllegalArgumentException {
         if (esFechaValida(dia, mes, año)) {
             this.año = año;
             this.mes = mes;
             this.dia = dia;
+        } else {
+            throw new IllegalArgumentException("ERROR: La fecha no es válida");
         }
     }
-    boolean iguales(Calendario fecha1, Calendario fecha2){
+
+    boolean iguales(Calendario fecha1, Calendario fecha2) {
         return fecha1.año == fecha2.año && fecha1.mes == fecha2.mes && fecha1.dia == fecha2.dia;
     }
+
     public void incrementarMes() {
         mes++;
         if (mes > 12) {
             mes = 1;
-            año++;
+            incrementarAño(1);
         }
     }
 
     public void incrementarAño(int cantidad) {
         año += cantidad;
+        if (año == 0) {
+            año = cantidad < 0 ? -1 : 1; // El año 0 no existe
+        }
     }
 
     public void incrementarDia() {
@@ -34,31 +41,19 @@ public class Calendario {
             case 1, 3, 5, 7, 8, 10, 12 -> {
                 if (dia > 31) {
                     dia = 1;
-                    mes++;
-                    if (mes > 12) {
-                        mes = 1;
-                        año++;
-                    }
+                    incrementarMes();
                 }
             }
             case 2 -> {
                 if (dia > 28) {
-                    mes++;
                     dia = 1;
-                    if (mes > 12) {
-                        mes = 1;
-                        año++;
-                    }
+                    incrementarMes();
                 }
             }
             case 4, 6, 9, 11 -> {
                 if (dia > 30) {
                     dia = 1;
-                    mes++;
-                    if (mes > 12) {
-                        año++;
-                        mes = 1;
-                    }
+                    incrementarMes();
                 }
             }
             default -> {
@@ -96,7 +91,7 @@ public class Calendario {
                 esMesValido = false;
             }
         }
-        return esDiaValido && esMesValido;
+        return esDiaValido && esMesValido && año != 0;
     }
 
     public static boolean esBisiesto(int year) {
