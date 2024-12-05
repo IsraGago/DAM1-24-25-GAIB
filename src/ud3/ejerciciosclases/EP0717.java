@@ -9,7 +9,9 @@ public class EP0717 {
         Jugador jugador3 = new Jugador("Mario",posiciones.PORTERO);
         
         jugador.mostrarFicha();
+        System.out.println();
         jugador2.mostrarFicha();
+        System.out.println();
         jugador3.mostrarFicha();
     }
 }

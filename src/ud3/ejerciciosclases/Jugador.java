@@ -28,5 +28,22 @@ public class Jugador {
         System.out.println("Estatura: "+estatura);
         System.out.println("Posición: "+posicion.toString().toLowerCase());
     }
+    
+    public void cambiarPosicion(posiciones posicion){
+        this.posicion = posicion;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+    public String getNombre() {
+        return nombre;
+    }
+    public double getEstatura() {
+        return estatura;
+    }
+    public posiciones getPosicion() {
+        return posicion;
+    }
 
 }
