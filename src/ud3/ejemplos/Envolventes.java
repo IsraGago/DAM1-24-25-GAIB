@@ -7,13 +7,13 @@ public class Envolventes {
         Integer entero = k; // se crea el objeto y se le asigna el valor
         
         String cadena = "4.21";
-        Float objetoFloat = Float.valueOf(cadena);
+        Float objetoFloat = Float.valueOf(cadena); // objeto Float cogiendo el valor de una String
 
         // float floatPrimitivo = objetoFloat.floatValue(); // obsoleto
         float floatPrimitivo = objetoFloat;
 
         String s1 ="25",s2 = "92.2";
-        int n = Integer.parseInt(s1);
+        int n = Integer.parseInt(s1); // tipo primitivo int cogiendo el valor de un objeto Integer
         double d = Double.parseDouble(s2);
 
         int decimalABinario = Integer.parseInt("101",2);
