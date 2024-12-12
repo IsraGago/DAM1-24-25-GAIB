@@ -13,8 +13,14 @@ public class User {
         this.createdAt = LocalDateTime.now();
         this.lastLogin = null;
     }
+    
     public User(String username) {
         this(username, null);
+    }
+    
+    public void mostrar(){
+        System.out.println("Nombre de usuario: " +username );
+        System.out.println("Email: " + email);
     }
     
     public String toString(){
@@ -24,6 +30,7 @@ public class User {
     public String getPassword() {
         return password;
     }
+    
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -32,6 +39,9 @@ public class User {
     }
     public LocalDateTime getLastLogin() {
         return lastLogin;
+    }
+    public String getUsername() {
+        return username;
     }
 
     
