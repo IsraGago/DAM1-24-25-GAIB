@@ -1,4 +1,4 @@
-package ud3.ejerciciosclases;
+package ud3.ejerciciospropuestos;
 
 public class EcuacionSegundoGrado {
     private double a, b, c;

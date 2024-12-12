@@ -1,4 +1,4 @@
-package ud3.ejerciciosclases;
+package ud3.ejerciciospropuestos;
 
 public class Punto {
     private double x, y;

@@ -1,4 +1,4 @@
-package ud3.ejerciciosclases;
+package ud3.ejerciciospropuestos;
 //E0213
 
 public class Calendario {
